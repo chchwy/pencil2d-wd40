@@ -1,4 +1,8 @@
 
+
+SET QTDIR="F:\Qt\5.12.10\msvc2017_64"
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
+
 md "ts-tmp"
 del /f/s/q "ts-tmp"
 
@@ -29,7 +33,7 @@ git commit -m "Sync translations from Transifex"
 popd
 
 echo "=====Updating source language====="
-call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
+
 %QTDIR%\bin\lupdate pencil2d.pro
 git add translations/pencil.ts
 git commit -m "lupdate: update the source language"
