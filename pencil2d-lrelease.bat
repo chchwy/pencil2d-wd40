@@ -1,7 +1,9 @@
 
+call "F:\Qt\5.15.2\msvc2019_64\bin\qtenv2.bat"
+
 pushd ..\pencil2d
 
-%QTDIR%\bin\lrelease pencil2d.pro
+lrelease pencil2d.pro
 git add .
 git commit -m "lrelease: generating qm files"
 

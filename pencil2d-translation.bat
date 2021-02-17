@@ -1,7 +1,9 @@
 
 
-SET QTDIR="F:\Qt\5.12.10\msvc2017_64"
+call "F:\Qt\5.15.2\msvc2019_64\bin\qtenv2.bat"
 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
+
+cd /D "F:\github\pencil2d"
 
 md "ts-tmp"
 del /f/s/q "ts-tmp"
@@ -34,13 +36,13 @@ popd
 
 echo "=====Updating source language====="
 
-%QTDIR%\bin\lupdate pencil2d.pro
+lupdate pencil2d.pro
 git add translations/pencil.ts
 git commit -m "lupdate: update the source language"
 git reset --hard
 
 echo "====Generate qm files====="
-%QTDIR%\bin\lrelease pencil2d.pro
+lrelease pencil2d.pro
 git add .
 git commit -m "lrelease: generating qm files"
 
