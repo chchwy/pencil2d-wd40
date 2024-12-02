@@ -1,10 +1,15 @@
-REM https://developer.atlassian.com/bitbucket/api/2/reference/resource/repositories/%7Bworkspace%7D/%7Brepo_slug%7D/downloads#post
 
-curl -s -u chchwy -X POST https://api.bitbucket.org/2.0/repositories/chchwy/pencil2d/downloads^
- -F files=@5/pencil2d-linux-amd64-0.6.5.AppImage^
- -F files=@5/pencil2d-linux-i386-0.6.5.AppImage^
- -F files=@5/pencil2d-mac-0.6.5.zip^
- -F files=@5/pencil2d-win32-0.6.5.zip^
- -F files=@5/pencil2d-win64-0.6.5.zip^
- -F files=@5/pencil2d-winxp-0.6.5.zip
+set ACCESS_TOKEN=%BITCUCKET_ACCESS_TOKEN%
+set URL=https://api.bitbucket.org/2.0/repositories/chchwy/pencil2d/downloads
+set VERSION=0.7.0
 
+curl -X POST -H "Authorization: Bearer %ACCESS_TOKEN%" ^
+  %URL% ^
+  --progress-bar ^
+  -F files=@pencil2d-win32-%VERSION%.zip ^
+  -F files=@pencil2d-win64-%VERSION%.zip ^
+  -F files=@pencil2d-winxp-%VERSION%.zip ^
+  -F files=@pencil2d-mac-%VERSION%.zip ^
+  -F files=@pencil2d-mac-legacy-%VERSION%.zip ^
+  -F files=@pencil2d-linux-i386-%VERSION%.AppImage ^
+  -F files=@pencil2d-linux-amd64-%VERSION%.AppImage
